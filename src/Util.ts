@@ -45,7 +45,7 @@ class Util {
                     break
                 }
                 else if(nextValue === mark) {
-//                    console.log('NEXT VALUE IS SAME MARK!')
+                    console.log('NEXT VALUE IS SAME MARK!')
                     if(captureLine.length > 0) {
                         captureLine = captureLine.concat({r: rowIx, c: colIx})
                     }
@@ -56,6 +56,12 @@ class Util {
                 }
             } else {
                 console.log('GOES OUT OF BOARD!!!')
+                captureLine = []
+                break
+            }
+
+            if(i === C.BOARD_NUM_COLS-1) {
+                console.log('THE LAST I!!!')
                 captureLine = []
                 break
             }
