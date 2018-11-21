@@ -73,6 +73,46 @@ class Util {
     public static isOnBoard(rowIx:number, colIx:number) {
         return rowIx >= 0 && rowIx < C.BOARD_NUM_ROWS && colIx >= 0 && colIx < C.BOARD_NUM_COLS
     }
+
+
+    public static evaluateBoardFor(board:string[], maximizerToken:string) {
+        let score = 0
+        const parityScore = Util.parityScore(board, maximizerToken)
+        
+        score += parityScore
+        return score
+    }
+
+    public static parityScore(board:string[], maximizerToken:string) {
+        const otherToken = maximizerToken == 'X' ? 'O' : 'X'
+        const numMax = Util.getNumCoinsFor(board, maximizerToken)
+        const numMin = Util.getNumCoinsFor(board, otherToken)
+        console.log('numMin:' + numMin + ' numMax:' + numMax)
+
+        const parityScore = 100 * (numMax - numMin) / (numMax + numMin)
+        console.log('parityScore:' + parityScore)
+        return parityScore
+    }
+
+    public static mobilityScore(board:string[], maximizerToken:string) {
+        let mobilityScore = 0
+        return mobilityScore
+    }
+
+    public static cornerScore(board:string[], maximizerToken:string) {
+        let cornerScore = 0
+        return cornerScore
+    }
+
+    public static getNumCoinsFor(board:string[], token:string) {
+        let numCoins = 0
+        for(const cell of board) {
+            if(cell == token) {
+                numCoins++
+            }
+        }
+        return numCoins
+    }
 }
 
 export default Util

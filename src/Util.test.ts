@@ -104,6 +104,26 @@ describe('first move of black at row 2 col 3', () => {
 
         expect(Util.captures(board, 'X', 0, 0)).toEqual([])
     })
+})
 
+
+describe.only('util helper functions', () => {
+    let board:string[]
+    beforeEach(() => {
+        board = []
+        for(let colIx = 0; colIx < C.BOARD_NUM_COLS; colIx++) {
+            for(let rowIx = 0; rowIx < C.BOARD_NUM_ROWS; rowIx++) {
+                board.push('')
+            }
+        }
+        Util.dumpBoard(board)
+    })
+
+    it('testing parityScore', () => {
+        board[0] = 'X'
+        // board[1] = 'X'
+        // board[2] = 'O'
+        expect(Util.parityScore(board, 'X')).toBe(100)
+    })
 
 })
